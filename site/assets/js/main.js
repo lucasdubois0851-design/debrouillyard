@@ -103,14 +103,18 @@
 
   // Photo = assets/img/participants/<id>.jpg (préparée par outils/preparer_images.py).
   // Si elle n'existe pas, l'initiale reste affichée.
+  // L'image est insérée tout de suite : en « lazy », le navigateur ne la charge
+  // que lorsqu'elle est dans la page, donc l'insérer dans onload la bloquerait.
   function loadPhoto(container, id, alt) {
     if (!SAFE_ID.test(id)) return;
     const img = new Image();
     img.alt = alt;
     img.decoding = "async";
     img.loading = "lazy";
-    img.onload = () => { $(".initials", container)?.remove(); container.prepend(img); };
+    img.onload = () => $(".initials", container)?.remove();
+    img.onerror = () => img.remove();
     img.src = `${window.PHOTO_DIR}${id}.jpg`;
+    container.prepend(img);
   }
 
   const people = Array.isArray(window.PARTICIPANTS) ? window.PARTICIPANTS : [];

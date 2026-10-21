@@ -21,7 +21,7 @@ window.EVENT = {
   maxRunners: 25,
   // Nombre d'inscrits affiché dans les compteurs, en attendant d'avoir leurs prénoms.
   // Mettre null pour compter automatiquement à partir de la liste PARTICIPANTS.
-  registered: 7,
+  registered: 8,
 };
 
 window.PHOTO_DIR = "assets/img/participants/";
@@ -37,5 +37,6 @@ window.PARTICIPANTS = [
   { id: "arsene-moncassin", name: "Arsène", bib: "09" },
   { id: "maxime-perez",     name: "Maxime", bib: "99" },
   { id: "pierre-baudouin",  name: "Pierre", bib: "11" },
-  { id: "corentin-masson",  name: "Corentin", bib: "06" },
+  { id: "corentin-masson",  name: "Corentin", bib: "006" },
+  { id: "hugo-gaillot",     name: "Hugo",   bib: "06" },
 ];

@@ -300,7 +300,9 @@ section { padding: clamp(80px, 11vw, 160px) 0; position: relative; }
   font-weight: 600; font-size: 18px; color: var(--ink-2);
   border: 2px solid var(--bg);
 }
-.face img { width: 100%; height: 100%; object-fit: cover; }
+.face { position: relative; }
+.face img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .3s; }
+.face:hover img.photo { opacity: 1; }
 
 /* ---------- CTA cards ---------- */
 .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -351,8 +353,16 @@ section { padding: clamp(80px, 11vw, 160px) 0; position: relative; }
   aspect-ratio: 4/5; background: var(--bg-2); position: relative; overflow: hidden;
   display: grid; place-items: center;
 }
-.runner-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
-.runner:hover .runner-photo img { transform: scale(1.04); }
+.runner { cursor: pointer; }
+.runner.blank { cursor: default; }
+.runner-photo img.photo {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.06); transition: opacity .35s ease, transform .6s ease;
+}
+.runner:hover .runner-photo img.photo,
+.runner:focus-visible .runner-photo img.photo,
+.runner.show .runner-photo img.photo { opacity: 1; transform: none; }
+.runner-bib { z-index: 1; }
 .runner-photo .initials {
   font-size: 88px; font-weight: 600; letter-spacing: -.05em; color: #cfccc4;
 }

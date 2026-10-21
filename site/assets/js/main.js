@@ -102,15 +102,15 @@
   const SAFE_ID = /^[a-z0-9-]+$/;
 
   // Photo = assets/img/participants/<id>.jpg (préparée par outils/preparer_images.py).
-  // Si elle n'existe pas, l'initiale reste affichée.
+  // L'image est placée tout de suite dans la carte (sinon certains navigateurs, comme Safari,
+  // ne chargent jamais une image « lazy » hors de la page), mais reste invisible :
+  // l'initiale s'affiche, la photo n'apparaît qu'au survol (ou au toucher sur mobile).
   function loadPhoto(container, id, alt) {
     if (!SAFE_ID.test(id)) return;
-    const img = new Image();
-    img.alt = alt;
-    img.decoding = "async";
-    img.loading = "lazy";
-    img.onload = () => { $(".initials", container)?.remove(); container.prepend(img); };
-    img.src = `${window.PHOTO_DIR}${id}.jpg`;
+    const img = h("img", { class: "photo", alt, decoding: "async", loading: "lazy", src: `${window.PHOTO_DIR}${id}.jpg` });
+    img.addEventListener("load", () => container.classList.add("has-photo"));
+    img.addEventListener("error", () => img.remove());
+    container.append(img);
   }
 
   const people = Array.isArray(window.PARTICIPANTS) ? window.PARTICIPANTS : [];
@@ -165,7 +165,7 @@
       const photo = h("div", { class: "runner-photo" },
         h("span", { class: "initials", "aria-hidden": "true" }, initials(p.name)),
         n ? h("div", { class: "runner-bib" }, "N°", h("b", null, n)) : null);
-      const card = h("article", { class: "runner reveal" },
+      const card = h("article", { class: "runner reveal", tabindex: "0" },
         photo,
         h("div", { class: "runner-body" },
           h("h2", { class: "name" }, p.name),
@@ -173,6 +173,11 @@
       card.dataset.search = normalize(`${p.name} ${n} ${n.replace(/^0+/, "")}`);
       grid.append(card);
       loadPhoto(photo, p.id, p.name);
+      // Sur écran tactile (pas de survol) : un appui affiche / masque la photo
+      card.addEventListener("click", () => {
+        $$(".runner.show", grid).forEach(c => c !== card && c.classList.remove("show"));
+        card.classList.toggle("show");
+      });
     }
     observeReveal(grid);
 

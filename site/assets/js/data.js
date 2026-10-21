@@ -37,6 +37,6 @@ window.PARTICIPANTS = [
   { id: "arsene-moncassin", name: "Arsène", bib: "09" },
   { id: "maxime-perez",     name: "Maxime", bib: "99" },
   { id: "pierre-baudouin",  name: "Pierre", bib: "11" },
-  { id: "corentin-masson",  name: "Corentin", bib: "006" },
+  { id: "corentin-masson",  name: "Corentin", bib: "19" },
   { id: "hugo-gaillot",     name: "Hugo",   bib: "06" },
 ];

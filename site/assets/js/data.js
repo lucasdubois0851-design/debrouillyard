@@ -25,6 +25,8 @@ window.EVENT = {
 };
 
 window.PHOTO_DIR = "assets/img/participants/";
+// À changer quand une photo est remplacée, pour que les navigateurs rechargent la nouvelle.
+window.PHOTO_VERSION = "20261102220301";
 
 // Participants inscrits, dans l'ordre d'inscription (les cartes suivent cet ordre).
 // `bib`  = numéro de dossard, tel qu'il doit s'afficher (jusqu'à 4 chiffres, ex. "07", "2003").

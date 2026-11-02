@@ -106,7 +106,7 @@
   // ne chargent jamais une image « lazy » hors de la page). Elle recouvre l'initiale.
   function loadPhoto(container, id, alt) {
     if (!SAFE_ID.test(id)) return;
-    const img = h("img", { class: "photo", alt, decoding: "async", src: `${window.PHOTO_DIR}${id}.jpg` });
+    const img = h("img", { class: "photo", alt, decoding: "async", src: `${window.PHOTO_DIR}${id}.jpg?v=${window.PHOTO_VERSION || ""}` });
     img.addEventListener("load", () => container.classList.add("has-photo"));
     img.addEventListener("error", () => img.remove());
     container.append(img);

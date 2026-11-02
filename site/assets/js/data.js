@@ -49,5 +49,5 @@ window.PARTICIPANTS = [
   { id: "guillaume-de-lorenzi", name: "Guillaume", bib: "26" },
   { id: "theo-delouette",   name: "Théo",     bib: "50" },
   { id: "quentin-blondeaux", name: "Quentin", bib: "23" },
-  { id: "remi-dubois",      name: "Rémi",     bib: "" },   // dossard à venir (le 50 est pris)
+  { id: "remi-dubois",      name: "Rémi",     bib: "60" },
 ];

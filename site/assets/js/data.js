@@ -26,7 +26,7 @@ window.EVENT = {
 
 window.PHOTO_DIR = "assets/img/participants/";
 // À changer quand une photo est remplacée, pour que les navigateurs rechargent la nouvelle.
-window.PHOTO_VERSION = "20261102220301";
+window.PHOTO_VERSION = "20261117230714";
 
 // Participants inscrits, dans l'ordre d'inscription (les cartes suivent cet ordre).
 // `bib`  = numéro de dossard, tel qu'il doit s'afficher (jusqu'à 4 chiffres, ex. "07", "2003").
@@ -52,4 +52,9 @@ window.PARTICIPANTS = [
   { id: "theo-delouette",   name: "Théo",     bib: "50" },
   { id: "quentin-blondeaux", name: "Quentin", bib: "23" },
   { id: "remi-dubois",      name: "Rémi",     bib: "60" },
+  { id: "alex-le-maguet",   name: "Alex",     bib: "1200" },
+  { id: "dylan-allart",     name: "Dylan",    bib: "" },
+  { id: "margot-rousseaux", name: "Margot",   bib: "777" },
+  { id: "noemie-bourin",    name: "Noémie",   bib: "16" },
+  { id: "pierre-mangin",    name: "Pierre",   bib: "69" },
 ];
